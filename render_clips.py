@@ -69,7 +69,7 @@ def render(ed, up="../", cat_date=None, cat_items=None):
     if not pages:
         pages.append(page("Coming Soon", '<div class="box"><h2>The first Roach Clips is on its way</h2><p>Tuesdays B.I.G clips new things to try; '
                           'every night he files his Wish-Book of side gigs.</p></div>'))
-    seal = '<a class="seal" href="/" aria-label="Back to the Newsstand" title="Back to the Newsstand">%s</a>' % SEAL
+    seal = '<a class="seal" href="/" aria-label="Back to The Corner Chronicle" title="Back to The Corner Chronicle">%s</a>' % SEAL
     front = page("Roach Clips", (
         '<div class="gum"><span>KUTCORNERS · CLIP &amp; SAVE · FOUND BY B.I.G</span></div>'
         '<div class="pc-top">%s<div class="ear">No. %s<br>%s<br><b>%s</b><br>%s</div></div>'
@@ -83,7 +83,7 @@ def render(ed, up="../", cat_date=None, cat_items=None):
         '<div class="pb-body">%s<h2 class="pb-title">Roach Clips</h2>'
         '<p>Scouted by B.I.G for the gear you already have.<br>Prices checked the night before — they can change. Nothing is bought without you.</p>'
         '%s<p class="pb-code">%s · No. %s</p><p><a href="%sclipped.html">Your clip board ›</a> · <a href="%scatalog.html">Wish-Book archive ›</a> · '
-        '<a href="%sarchive.html">Back issues ›</a> · <a href="/">🏠 The Newsstand</a></p></div>')
+        '<a href="%sarchive.html">Back issues ›</a> · <a href="/">🏠 The Corner Chronicle</a></p></div>')
         % (seal, back_codes("https://github.com/real-CAK3D/RoachClips", "RoachClips"), date, e(no), up, up, up), " hardcover back")
     lists = {"coupon": [{k: c.get(k) for k in KEYS} for c in cps], "market": [{k: x.get(k) for k in fb.MARKET_KEYS} for x in cat_items or []],
              "market_date": cat_date or ""}

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# After B.I.G's nightly shift: pull his new Wish-Book into Roach Clips, rebuild the pages and ring the Newsstand's bell.
+# After B.I.G's nightly shift: pull his new Wish-Book into Roach Clips, rebuild the pages and ring The Corner Chronicle's bell.
 set -u
 D="$HOME/.hermes/garden/roach-clips"; PY="$HOME/.hermes/hermes-agent/venv/bin/python"; T=$(TZ=America/New_York date +%F)
 cd "$D" && "$PY" "$D/build_clips.py"

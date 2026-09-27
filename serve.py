@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Roach Clips web server (Tailscale-only; mounted at /roach-clips/ under the Newsstand).
+"""Roach Clips web server (Tailscale-only; mounted at /roach-clips/ under The Corner Chronicle).
 
   GET  /api/jobs?date=YYYY-MM-DD      -> each coupon's state ("coupon:<idx>": clipped / approved + result)
   POST /api/jobs {date, kind: "coupon", idx, decision: approve | clip | dismiss}
@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE = os.path.join(ROOT, "site")
 HERMES = os.path.expanduser("~/.hermes")
 PY = os.path.join(HERMES, "hermes-agent/venv/bin/python")
-NEWSSTAND = os.path.join(HERMES, "garden", "newsstand")   # notices go out through the Newsstand app
+NEWSSTAND = os.path.join(HERMES, "garden", "newsstand")   # notices go out through The Corner Chronicle app
 RESULT_RULE = ("START your final reply with exactly one line: 'RESULT: OK — <what worked>', 'RESULT: FAILED — <what went wrong>' or "
                "'RESULT: NEEDS CAK3D — <the step he must do>'. Roach Clips shows that line on the clip board, so keep it under 120 characters.")
 
@@ -54,7 +54,7 @@ def hand_to_ganja(date, c):
 
 def start_plan(date, item, item_no):
     """B.I.G's gateway is only up for shifts, so his one-off plan job runs through relay-step (start, run, stop);
-    then the plan page is built and CAK3D gets a notice on the Newsstand."""
+    then the plan page is built and CAK3D gets a notice on The Corner Chronicle."""
     facts = json.dumps({k: item.get(k) for k in ("item_no", "title", "tag", "price", "desc", "how", "income_week", "tend", "upfront",
                                                   "weekly_cost", "risk", "links")}, ensure_ascii=False, indent=1)
     prompt = open(os.path.join(ROOT, "prompts", "big_plan_prompt.txt")).read() \

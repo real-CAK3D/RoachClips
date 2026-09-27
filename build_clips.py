@@ -35,7 +35,7 @@ def shell(title, body):
 
 
 def topbar(title, sub):
-    return ('<header class="stand-top"><a class="stand-home ns-home" href="/" aria-label="The Newsstand" title="The Newsstand">🏠</a><a class="stand-home" href="./" aria-label="This week\'s coupons">✂</a><div><h1>%s</h1>'
+    return ('<header class="stand-top"><a class="stand-home ns-home" href="/" aria-label="The Corner Chronicle" title="The Corner Chronicle">🏠</a><a class="stand-home" href="./" aria-label="This week\'s coupons">✂</a><div><h1>%s</h1>'
             '<div class="stand-sub">%s</div></div><a class="stand-home" href="archive.html" aria-label="Back issues">🗂</a></header>' % (e(title), e(sub)))
 
 
@@ -78,7 +78,7 @@ def build_archive():
     items = "".join('<li><a href="issues/%s.html">%s</a></li>' % (x, nice(x)) for x in issues())
     body = ('%s<main class="paper"><div class="box arch"><h2>Roach Clips</h2><ul class="archive">%s</ul></div>'
             '<div class="box arch"><h2>Also</h2><ul class="archive"><li><a href="clipped.html">✂ Your clip board</a></li><li><a href="catalog.html">💰 B.I.G&#39;s Wish-Book archive &amp; plans</a></li>'
-            '<li><a href="/green-thumb/">🌱 The Green Thumb</a> <span class="small">(what you already have)</span></li><li><a href="/">🏪 The Newsstand</a></li></ul></div></main>'
+            '<li><a href="/green-thumb/">🌱 The Green Thumb</a> <span class="small">(what you already have)</span></li><li><a href="/">🏪 The Corner Chronicle</a></li></ul></div></main>'
             % (topbar("Back Issues", "every Roach Clips"), items or "<li>The first Roach Clips comes Tuesday.</li>"))
     open(os.path.join(SITE, "archive.html"), "w").write(shell("Roach Clips — Back Issues", body))
 

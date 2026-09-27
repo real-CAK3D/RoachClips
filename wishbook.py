@@ -52,7 +52,7 @@ def shell(title, body, cls="stand", extra_head="", scripts=""):
 
 
 def topbar(title, sub="", up=""):
-    return ('<header class="stand-top"><a class="stand-home ns-home" href="/" aria-label="The Newsstand" title="The Newsstand">🏠</a><a class="stand-home" href="%s" aria-label="Roach Clips">✂</a>'
+    return ('<header class="stand-top"><a class="stand-home ns-home" href="/" aria-label="The Corner Chronicle" title="The Corner Chronicle">🏠</a><a class="stand-home" href="%s" aria-label="Roach Clips">✂</a>'
             '<div><h1>%s</h1>%s</div><a class="stand-home" href="%sarchive.html" aria-label="Back issues">🗂</a></header>'
             % (up or "./", e(title), ('<div class="stand-sub">%s</div>' % e(sub)) if sub else "", up))
 
@@ -111,7 +111,7 @@ def build_guides():
                 '<article class="guide-body">%s</article>'
                 '<p class="guide-foot">B.I.G never buys anything or opens accounts for you — every sign-up and payment here is yours to do. '
                 'Legal and tax notes are general information for Maine, not legal advice; check the official links.</p>'
-                '<p class="center"><a href="../catalog.html">← B.I.G\'s catalog</a> · <a href="../">✂ Roach Clips</a> · <a href="/">🏠 Newsstand</a></p></main>'
+                '<p class="center"><a href="../catalog.html">← B.I.G\'s catalog</a> · <a href="../">✂ Roach Clips</a> · <a href="/">🏠 The Corner Chronicle</a></p></main>'
                 % (topbar("Start-to-Finish Plan", title, "../"), e(no), mug("B.I.G", "mug sm"), written, md_to_html(text)))
         open(out, "w").write(shell("%s — B.I.G's plan" % title, body, "stand guide-page"))
 
