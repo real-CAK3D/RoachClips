@@ -13,11 +13,11 @@ Part of the Garden's papers, all read through **[The Corner Chronicle](https://g
 | `build_clips.py` | Home page, back issues and the clip board. |
 | `serve.py` | Clip / set-up / pass for each coupon (set-ups go to Ganja as a one-off Hermes job) and B.I.G's plan requests. |
 | `wishbook.py` | Copies B.I.G's nightly catalogs from the vault, builds the Wish-Book archive and turns his Markdown plans into pages. |
-| `deliver_wishbook.sh` | After B.I.G's nightly shift: new Wish-Book in, pages rebuilt, the Newsstand's bell rung. |
+| `deliver_wishbook.sh` | After B.I.G's nightly shift: new Wish-Book in, pages rebuilt, The Corner Chronicle's bell rung. |
 | `prompts/big_plan_prompt.txt` | B.I.G's instructions for a start-to-finish plan. |
 | `prompts/clips_prompt.txt` | B.I.G's instructions and the coupon schema. |
 | `gardenweb.py` | The small shared web-server kit every Garden paper carries its own copy of. |
 
 ## Running
 
-Runs Tuesdays at 05:00 Eastern; served at `/roach-clips/` under the Newsstand. Each project is Linux-first (`%-d` date formatting) and expects a Hermes install on the same machine.
+Runs Tuesdays at 05:00 Eastern; served at `/roach-clips/` under The Corner Chronicle. Each project is Linux-first (`%-d` date formatting) and expects a Hermes install on the same machine.
