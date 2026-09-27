@@ -35,7 +35,7 @@ def shell(title, body):
 
 
 def topbar(title, sub):
-    return ('<header class="stand-top"><a class="stand-home" href="./" aria-label="This week\'s coupons">✂</a><div><h1>%s</h1>'
+    return ('<header class="stand-top"><a class="stand-home ns-home" href="/" aria-label="The Newsstand" title="The Newsstand">🏠</a><a class="stand-home" href="./" aria-label="This week\'s coupons">✂</a><div><h1>%s</h1>'
             '<div class="stand-sub">%s</div></div><a class="stand-home" href="archive.html" aria-label="Back issues">🗂</a></header>' % (e(title), e(sub)))
 
 

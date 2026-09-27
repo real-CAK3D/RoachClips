@@ -9,7 +9,7 @@ Uses its own copy of The Double Wide's flipbook (flipbook.py) with its own pack 
 import datetime as dt, glob, json, os, sys
 
 import flipbook as fb
-from flipbook import e, para, page, SEAL, catalog_block
+from flipbook import e, para, page, SEAL, catalog_block, back_codes
 
 fb.CSS_FILE = "roach-clips.css"
 ROOT, SITE = fb.ROOT, fb.SITE
@@ -82,8 +82,9 @@ def render(ed, up="../", cat_date=None, cat_items=None):
         '<div class="gum"><span>SCOUTED BY B.I.G · THE GARDEN</span></div>'
         '<div class="pb-body">%s<h2 class="pb-title">Roach Clips</h2>'
         '<p>Scouted by B.I.G for the gear you already have.<br>Prices checked the night before — they can change. Nothing is bought without you.</p>'
-        '<p class="pb-code">%s · No. %s</p><p><a href="%sclipped.html">Your clip board ›</a> · <a href="%scatalog.html">Wish-Book archive ›</a> · '
-        '<a href="%sarchive.html">Back issues ›</a></p></div>') % (seal, date, e(no), up, up, up), " hardcover back")
+        '%s<p class="pb-code">%s · No. %s</p><p><a href="%sclipped.html">Your clip board ›</a> · <a href="%scatalog.html">Wish-Book archive ›</a> · '
+        '<a href="%sarchive.html">Back issues ›</a> · <a href="/">🏠 The Newsstand</a></p></div>')
+        % (seal, back_codes("https://github.com/real-CAK3D/RoachClips", "RoachClips"), date, e(no), up, up, up), " hardcover back")
     lists = {"coupon": [{k: c.get(k) for k in KEYS} for c in cps], "market": [{k: x.get(k) for k in fb.MARKET_KEYS} for x in cat_items or []],
              "market_date": cat_date or ""}
     return fb.book([front] + pages + [back], date=date, no=no, lists=lists,
