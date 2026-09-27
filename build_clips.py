@@ -77,26 +77,33 @@ def build_clipped():
 def build_archive():
     items = "".join('<li><a href="issues/%s.html">%s</a></li>' % (x, nice(x)) for x in issues())
     body = ('%s<main class="paper"><div class="box arch"><h2>Roach Clips</h2><ul class="archive">%s</ul></div>'
-            '<div class="box arch"><h2>Also</h2><ul class="archive"><li><a href="clipped.html">✂ Your clip board</a></li>'
+            '<div class="box arch"><h2>Also</h2><ul class="archive"><li><a href="clipped.html">✂ Your clip board</a></li><li><a href="catalog.html">💰 B.I.G&#39;s Wish-Book archive &amp; plans</a></li>'
             '<li><a href="/green-thumb/">🌱 The Green Thumb</a> <span class="small">(what you already have)</span></li><li><a href="/">🏪 The Newsstand</a></li></ul></div></main>'
             % (topbar("Back Issues", "every Roach Clips"), items or "<li>The first Roach Clips comes Tuesday.</li>"))
     open(os.path.join(SITE, "archive.html"), "w").write(shell("Roach Clips — Back Issues", body))
 
 
 def build_index():
+    """The home page is always live: the latest coupons (Tuesdays) plus B.I.G's latest Wish-Book (nightly)."""
+    import render_clips
     eds = issues()
-    if eds:
-        pg = open(os.path.join(SITE, "issues", eds[0] + ".html")).read()
-        open(os.path.join(SITE, "index.html"), "w").write(pg.replace('href="../', 'href="').replace('src="../', 'src="'))
-    else:
-        body = ('%s<main class="paper"><div class="box"><h2>The first Roach Clips is on its way</h2><p>Every Tuesday morning B.I.G clips 6–10 new things '
-                'to try — apps, self-hosted software, Raspberry Pi and ESP32 projects, AI tools and real deals — picked for the gear you already have.</p></div></main>'
-                % topbar("Roach Clips", "clip it · try it · keep it"))
-        open(os.path.join(SITE, "index.html"), "w").write(shell("Roach Clips", body))
+    ed = load(os.path.join(SITE, "data", eds[0] + ".json")) if eds else None
+    cat_date, cat_items = render_clips.latest_catalog()
+    open(os.path.join(SITE, "index.html"), "w").write(render_clips.render(ed, up="", cat_date=cat_date, cat_items=cat_items))
+    cps = (ed or {}).get("coupons") or []
+    issues_ = sorted(set(eds[:10] + ([cat_date] if cat_date else [])), reverse=True)
+    title = " · ".join(x for x in (("%d coupons" % len(cps)) if cps else "", ("%d Wish-Book ideas" % len(cat_items)) if cat_items else "") if x) or "First issue coming soon"
+    json.dump({"paper": "Roach Clips", "date": issues_[0] if issues_ else "", "title": title, "url": "", "issues": issues_},
+              open(os.path.join(SITE, "latest.json"), "w"), ensure_ascii=False)
+
+
+def build_wishbook():
+    import wishbook
+    wishbook.main()
 
 
 if __name__ == "__main__":
-    for step in (sync_portraits, build_clipped, build_archive, build_index):
+    for step in (sync_portraits, build_wishbook, build_clipped, build_archive, build_index):
         try:
             step()
         except Exception as ex:
