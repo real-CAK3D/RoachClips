@@ -83,7 +83,7 @@ def render(ed, up="../", cat_date=None, cat_items=None):
         '<div class="pb-body">%s<h2 class="pb-title">Roach Clips</h2>'
         '<p>Scouted by B.I.G for the gear you already have.<br>Prices checked the night before — they can change. Nothing is bought without you.</p>'
         '%s<p class="pb-code">%s · No. %s</p><p><a href="%sclipped.html">Your clip board ›</a> · <a href="%scatalog.html">Wish-Book archive ›</a> · '
-        '<a href="%sarchive.html">Back issues ›</a> · <a href="/">🏠 The Corner Chronicle</a></p></div>')
+        '<a href="%sarchive.html">Back issues ›</a></p></div>')
         % (seal, back_codes("https://github.com/real-CAK3D/RoachClips", "RoachClips"), date, e(no), up, up, up), " hardcover back")
     lists = {"coupon": [{k: c.get(k) for k in KEYS} for c in cps], "market": [{k: x.get(k) for k in fb.MARKET_KEYS} for x in cat_items or []],
              "market_date": cat_date or ""}
