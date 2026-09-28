@@ -78,7 +78,7 @@ def build_archive():
     items = "".join('<li><a href="issues/%s.html">%s</a></li>' % (x, nice(x)) for x in issues())
     body = ('%s<main class="paper"><div class="box arch"><h2>Roach Clips</h2><ul class="archive">%s</ul></div>'
             '<div class="box arch"><h2>Also</h2><ul class="archive"><li><a href="clipped.html">✂ Your clip board</a></li><li><a href="catalog.html">💰 B.I.G&#39;s Wish-Book archive &amp; plans</a></li>'
-            '<li><a href="/green-thumb/">🌱 The Green Thumb</a> <span class="small">(what you already have)</span></li><li><a href="/">🏪 The Corner Chronicle</a></li></ul></div></main>'
+            '<li><a href="/green-thumb/">🌱 The Green Thumb</a> <span class="small">(what you already have)</span></li></ul></div></main>'
             % (topbar("Back Issues", "every Roach Clips"), items or "<li>The first Roach Clips comes Tuesday.</li>"))
     open(os.path.join(SITE, "archive.html"), "w").write(shell("Roach Clips — Back Issues", body))
 

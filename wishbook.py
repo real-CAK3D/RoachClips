@@ -111,7 +111,7 @@ def build_guides():
                 '<article class="guide-body">%s</article>'
                 '<p class="guide-foot">B.I.G never buys anything or opens accounts for you — every sign-up and payment here is yours to do. '
                 'Legal and tax notes are general information for Maine, not legal advice; check the official links.</p>'
-                '<p class="center"><a href="../catalog.html">← B.I.G\'s catalog</a> · <a href="../">✂ Roach Clips</a> · <a href="/">🏠 The Corner Chronicle</a></p></main>'
+                '<p class="center"><a href="../catalog.html">← B.I.G\'s catalog</a> · <a href="../">✂ Roach Clips</a></p></main>'
                 % (topbar("Start-to-Finish Plan", title, "../"), e(no), mug("B.I.G", "mug sm"), written, md_to_html(text)))
         open(out, "w").write(shell("%s — B.I.G's plan" % title, body, "stand guide-page"))
 
